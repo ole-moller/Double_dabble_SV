@@ -18,7 +18,7 @@ module tt_um_ole_moller_double_dabble_SV (
 
 // Parameters
 localparam N = 8;
-localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)).
+localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)) ~ ceil(N*0.301029995), N >= 2
 
 // Internal signals
 wire [N-1:0] bin;
