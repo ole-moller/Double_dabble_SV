@@ -5,16 +5,16 @@
 
 `default_nettype none
 
-//module tt_um_ole-moller_double_dabble_SV (
-//    input  wire [7:0] ui_in,    // Dedicated inputs
-//    output wire [7:0] uo_out,   // Dedicated outputs
-//    input  wire [7:0] uio_in,   // IOs: Input path
-//    output wire [7:0] uio_out,  // IOs: Output path
-//    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-//    input  wire       ena,      // Always 1 when the design is powered
-//    input  wire       clk,      // clock
-//    input  wire       rst_n     // reset_n - low to reset
-//);
+module double_dabble_SV ( //module tt_um_ole-moller_double_dabble_SV (
+	input  wire [N-1:0] bin,	// Dedicated inputs//    input  wire [7:0] ui_in,    // Dedicated inputs
+	output wire [6:0] segments,	// Dedicated outputs//    output wire [7:0] uo_out,   // Dedicated outputs
+	output wire separator,	 	// Dedicated output//    input  wire [7:0] uio_in,   // IOs: Input path
+	output wire [7:0] bcd,  //    output wire [7:0] uio_out,  // IOs: Output path
+    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
+    input  wire       ena,      // Always 1 when the design is powered
+    input  wire       clk,      // clock
+    input  wire       rst_n     // reset_n - low to reset
+);
 
 // Parameters
 localparam N = 8;
@@ -22,7 +22,7 @@ localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)) ~ 
 
 // // Internal signals
 // wire [N-1:0] bin;
-// wire [4*M-1:0] bcd;
+wire [4*M-1:0] bcd;
 // wire [6:0] segments;
 // wire separator;
 
