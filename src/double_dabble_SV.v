@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module double_dabble_SV ( // Leading module name "tt_um_ole_moller_" temporarily removed.
+module tt_um_ole_moller_double_dabble_SV (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
