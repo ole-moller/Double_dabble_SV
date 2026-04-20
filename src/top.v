@@ -6,7 +6,7 @@
 
 `define default_netname none
 
-module tt_um_ole_moller_double_dabble_SV (
+module tt_um_ole-moller_double_dabble_SV ( // Changed "_" to "-" inside name
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
