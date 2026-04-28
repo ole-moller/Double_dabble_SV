@@ -6,9 +6,9 @@
 `default_nettype none
 
 module double_dabble_SV ( // Leading module name "tt_um_ole_moller_" temporarily removed.
-    input  wire [7:0] bin,      // 
-    output wire [6:0] segments, //
-    output wire       seperator, //
+    input  wire [7:0] bin,       // 
+    output wire [6:0] segments,  //
+    output wire       separator, //
     output wire [7:0] bcd 
 );
 
