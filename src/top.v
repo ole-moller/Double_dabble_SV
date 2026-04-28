@@ -6,7 +6,7 @@
 
 `define default_netname none
 
-module tt_um_ole-moller_double_dabble_SV ( // Changed "_" to "-" inside name
+module tt_um_ole_moller_double_dabble_SV ( 
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -26,9 +26,9 @@ module tt_um_ole-moller_double_dabble_SV ( // Changed "_" to "-" inside name
   assign uio_oe  = 1;
   
   double_dabble_SV u1 ( 
-    .bin(ui_in[7:0]),
-    .segments(uo_out[6:0]),
-    .separator(uo_out[7]),
-    .bcd(uio_out[7:0]));
+    .bin(           ui_in[7:0]),
+    .segments(      uo_out[6:0]),
+    .separator(     uo_out[7]),
+    .bcd(           uio_out[7:0]));
 
 endmodule

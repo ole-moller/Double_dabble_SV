@@ -6,14 +6,10 @@
 `default_nettype none
 
 module double_dabble_SV ( // Leading module name "tt_um_ole_moller_" temporarily removed.
-    input  wire [7:0] ui_in,    // Dedicated inputs
-    output wire [7:0] uo_out,   // Dedicated outputs
-    input  wire [7:0] uio_in,   // IOs: Input path
-    output wire [7:0] uio_out,  // IOs: Output path
-    output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
-    input  wire       ena,      // Always 1 when the design is powered
-    input  wire       clk,      // clock
-    input  wire       rst_n     // reset_n - low to reset
+    input  wire [7:0] bin,      // 
+    output wire [6:0] segments, //
+    output wire       seperator, //
+    output wire [7:0] bcd 
 );
 
 // Parameters
@@ -21,16 +17,8 @@ localparam N = 8;
 localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)) ~ ceil(N*0.301029995), N >= 2
 
 // Internal signals
-wire [N-1:0] bin;
-wire [4*M-1:0] bcd;
-wire [6:0] segments;
-wire separator;
-
-// I/O mapping
-assign bin = ui_in;						// Binary input to be converted to decimal
-assign uo_out = {separator, segments};	// Output drives 7-segment display
-assign uio_out = bcd[7:0];  			// BCD tens and ones for extra testing
-assign uio_oe = 8'hFF;      			// Bidirectional always output
+wire [4*M-1:0] bcd_all;
+assign bcd   = bcd[7:0];
 
 // ============================================================
 // Double dabble: combinational binary-to-BCD conversion
@@ -146,8 +134,5 @@ end
 // Separator state blanks segments and lights decimal point
 assign separator = (state == IDLE);
 assign segments = separator ? 7'b0000000 : seg_lut;
-
-// Unused inputs
-wire _unused = &{ena, uio_in, 1'b0};
 
 endmodule
