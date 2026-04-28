@@ -12,8 +12,8 @@ The lowest external clock is 1 Hz and by dividing it by 4 allows ample time to o
 
 ## How to test
 
-Explain how to use your project
+Connect power if no smoke all good
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Nothing 
