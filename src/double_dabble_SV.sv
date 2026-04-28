@@ -9,7 +9,9 @@ module double_dabble_SV ( // Leading module name "tt_um_ole_moller_" temporarily
     input  wire [7:0] bin,       // 
     output wire [6:0] segments,  //
     output wire       separator, //
-    output wire [7:0] bcd 
+    output wire [7:0] bcd,
+    input  wire       rst_n,
+    input  wire       clk   
 );
 
 // Parameters
@@ -18,7 +20,7 @@ localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)) ~ 
 
 // Internal signals
 wire [4*M-1:0] bcd_all;
-assign bcd   = bcd[7:0];
+assign bcd   = bcd_all[7:0];
 
 // ============================================================
 // Double dabble: combinational binary-to-BCD conversion
@@ -41,7 +43,7 @@ generate
     end
 endgenerate
 
-assign bcd = bcd_reg[N];
+assign bcd_all = bcd_reg[N];
 
 // ============================================================
 // Clock divider: divide-by-4 counter with enable
@@ -98,9 +100,9 @@ end
 always @(*) begin
     case (state)
         IDLE:     bcd_digit = 4'b0000;
-        HUNDREDS: bcd_digit = bcd[11:8];
-        TENS:     bcd_digit = bcd[7:4];
-        ONES:     bcd_digit = bcd[3:0];
+        HUNDREDS: bcd_digit = bcd_all[11:8];
+        TENS:     bcd_digit = bcd_all[7:4];
+        ONES:     bcd_digit = bcd_all[3:0];
         default:  bcd_digit = 4'b0000;
     endcase
 end

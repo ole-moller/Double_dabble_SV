@@ -29,6 +29,9 @@ module tt_um_ole_moller_double_dabble_SV (
     .bin(           ui_in[7:0]),
     .segments(      uo_out[6:0]),
     .separator(     uo_out[7]),
-    .bcd(           uio_out[7:0]));
+    .bcd(           uio_out[7:0]),
+    .rst_n(         rst_n),
+    .clk(           clk)
+    );
 
 endmodule
