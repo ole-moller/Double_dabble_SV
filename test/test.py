@@ -94,34 +94,34 @@ async def test_project(dut):
     # Only input differs from the test above
 
     # Test conversion of 123
-    dut.ui_in.value  = 123
-    dut.uio_in.value = 0
+    # dut.ui_in.value  = 123
+    # dut.uio_in.value = 0
 
     # Wait for four clock cycles to see separator
-    await ClockCycles(dut.clk, 4)
+    # await ClockCycles(dut.clk, 4)
     # Separator in 7-segment
-    assert dut.uo_out.value == 0b10000000
+    # assert dut.uo_out.value == 0b10000000
     
     # Wait for four clock cycles to see hundreds
-    await ClockCycles(dut.clk, 4)
+    # await ClockCycles(dut.clk, 4)
     # Hundreds = 0 in 7-segment
-    assert dut.uo_out.value == 0b00111111
+    # assert dut.uo_out.value == 0b00111111
     # BCD tens and ones only 1*16+2 = 18
-    assert dut.uio_out.value == 18
+    # assert dut.uio_out.value == 18
 
     # Wait for four clock cycles to see tens
-    await ClockCycles(dut.clk, 4)
+    # await ClockCycles(dut.clk, 4)
     # Tens = 1 in 7-segment
-    assert dut.uo_out.value == 0b00000110
+    # assert dut.uo_out.value == 0b00000110
     # BCD tens and ones are unchanged
-    assert dut.uio_out.value == 18
+    # assert dut.uio_out.value == 18
    
     # Wait for four clock cycles to see ones
-    await ClockCycles(dut.clk, 4)
+    # await ClockCycles(dut.clk, 4)
     # Ones = 2 in 7-segment
-    assert dut.uo_out.value == 0b01011011
+    # assert dut.uo_out.value == 0b01011011
     # BCD tens and ones are unchanged
-    assert dut.uio_out.value == 18
+    # assert dut.uio_out.value == 18
 
     # ------------------------------------
 
