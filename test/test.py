@@ -201,7 +201,7 @@ async def test_project(dut):
     # Wait for four clock cycles to see hundreds
     await ClockCycles(dut.clk, 4)
     # Hundreds = 1 in 7-segment
-    assert dut.uo_out.value == 0b01011011
+    assert dut.uo_out.value == 0b00000110
     # BCD tens and ones 8*16+9 = 137
     assert dut.uio_out.value == 137
 
