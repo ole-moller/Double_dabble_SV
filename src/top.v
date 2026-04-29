@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2026 Ole Henrik Møller
  * SPDX-License-Identifier: Apache-2.0
- */
+ */ 
 
 `define default_netname none
 
