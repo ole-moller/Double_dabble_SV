@@ -5,13 +5,13 @@
 
 `default_nettype none
 
-module double_dabble_SV ( // Leading module name "tt_um_ole_moller_" temporarily removed.
-    input  wire [7:0] bin,       // 
-    output wire [6:0] segments,  //
-    output wire       separator, //
-    output wire [7:0] bcd,
-    input  wire       rst_n,
-    input  wire       clk   
+module double_dabble_SV (
+	input  wire [7:0] bin,       // 8-bit binary number to be converted to decimal
+	output wire [6:0] segments,  // Segments of 7-segment display
+    output wire       separator, // Decimal point of 7-segment display
+	output wire [7:0] bcd_dd,	 // Digits of tens and ones
+    input  wire       rst_n,	 // Reset of clock divider and state machine
+    input  wire       clk   	 // Clock of clock divider and state machine
 );
 
 // Parameters
@@ -20,7 +20,7 @@ localparam M = 3; // ceil(log10(2^N-1)) = ceil(log10(2^N)) = ceil(N*log10(2)) ~ 
 
 // Internal signals
 wire [4*M-1:0] bcd_all;
-assign bcd   = bcd_all[7:0];
+assign bcd_dd = bcd_all[7:0];
 
 // ============================================================
 // Double dabble: combinational binary-to-BCD conversion
@@ -33,8 +33,8 @@ generate
 	for (i = 0; i < N; i = i + 1) begin : outer_loop // Bits from bin input
         wire [4*M-1:0] temp_bcd;
 		for (j = 0; j < M; j = j + 1) begin : inner_loop // BCD digits
-            // Add 3 if BCD digit >= 5 (corresponds to adding 6 after left shift)
-            // This is the difference between greatest hexadecimal and decimal digit.
+			// Add 3 if BCD digit >= 5 (corresponds to adding 6 after left shift).
+            // 6 is the difference between greatest hexadecimal and decimal digit.
             wire [3:0] corr_digit;
             assign corr_digit = (bcd_reg[i][4*j+3 -: 4] >= 4'd5) ? 4'd3 : 4'd0;
             assign temp_bcd[4*j+3 -: 4] = bcd_reg[i][4*j+3 -: 4] + corr_digit;
@@ -133,7 +133,9 @@ always @(*) begin
     endcase
 end
 
-// Separator state blanks segments and lights decimal point
+// =====================================================================
+// Decimal numbers are separated by a decimal point and blanked segments
+// =====================================================================
 assign separator = (state == IDLE);
 assign segments = separator ? 7'b0000000 : seg_lut;
 
