@@ -44,14 +44,14 @@ pinout:
   uo[7]: "separator"
 
   # Bidirectional pins
-  uio[0]: "bcd_tens_ones[0]"
-  uio[1]: "bcd_tens_ones[1]"
-  uio[2]: "bcd_tens_ones[2]"
-  uio[3]: "bcd_tens_ones[3]"
-  uio[4]: "bcd_tens_ones[4]"
-  uio[5]: "bcd_tens_ones[5]"
-  uio[6]: "bcd_tens_ones[6]"
-  uio[7]: "bcd_tens_ones[7]"
+  uio[0]: "bcd_dd[0]"
+  uio[1]: "bcd_dd[1]"
+  uio[2]: "bcd_dd[2]"
+  uio[3]: "bcd_dd[3]"
+  uio[4]: "bcd_dd[4]"
+  uio[5]: "bcd_dd[5]"
+  uio[6]: "bcd_dd[6]"
+  uio[7]: "bcd_dd[7]"
 
 # Do not change!
 yaml_version: 6
