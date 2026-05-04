@@ -219,7 +219,7 @@ async def test_project(dut):
     # ------------------------------------
    
     # Test conversion of 255
-    dut.ui_in.value  = 254 // Temporarily ruin last test
+    dut.ui_in.value  = 255
     dut.uio_in.value = 0
 
     # Wait for four clock cycles to see separator
