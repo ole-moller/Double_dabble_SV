@@ -31,7 +31,7 @@ assign bcd_reg[0] = {4*M{1'b0}};
 genvar i, j;
 generate
 	for (i = 0; i < N; i = i + 1) begin : outer_loop // Bits from bin input
-		wire [4*M-1:0] temp_bcd; // Depending on i some bits will not be used.
+		wire [4*M-2:0] temp_bcd; // Bit 11 is never used. // Depending on i some bits will not be used.
 		for (j = 0; j < M; j = j + 1) begin : inner_loop // BCD digits
 			// Add 3 if BCD digit >= 5 (corresponds to adding 6 after left shift).
             // 6 is the difference between greatest hexadecimal and decimal digit.
